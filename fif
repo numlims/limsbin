@@ -1,0 +1,13 @@
+#!/usr/bin/bash
+# fifi: find in files
+# usage: fifi <dir in single quotes> <search string>
+# todo: remove the single quotes from dir
+
+# if dir omitted, use current dir
+if [ $# == 1 ]
+then
+#  echo "one argument: $1"
+  grep -Rnw . -e $1
+else
+  grep -Rnw $1 -e $2
+fi

@@ -1,0 +1,13 @@
+#!/usr/bin/sh
+# jdict: print tab-seperated fields as json dict
+
+# todo: if more than one to-field, return an array of to-fields
+# maybe todo: if single field on line, treat following lines as its sub-dict until next empty line
+
+jq -Rsr 'split("\n") | map(select(. != "")) | map(split("\t") | { key: .[0], value:.[1]}) | from_entries'
+
+# -R: --raw input
+# -s: --slurp: 
+# -r: --raw-output
+# map: apply to all elements of array
+# from_entries: dict from array of key-value pairs

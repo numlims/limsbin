@@ -1,0 +1,7 @@
+#!/usr/bin/bash
+# jfmt formats a bunch of json files
+# usage: jfmt <files>
+
+for file in $@; do
+  cat $file | jq . > ${file%.*}.fmt.json
+done # todo: name out .fmt.json

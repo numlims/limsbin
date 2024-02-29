@@ -1,0 +1,22 @@
+#!/usr/bin/bash
+# reframe exchanges the header line of its input
+# usage: cat myfile.txt | reframe [--mapping <file>] "my,new,header,line"
+if [[ $1 == "--mapping" ]]; then
+    mapfile=$2
+    # remember input
+    cat > in.tmp
+    # generate a new header with renamed columns
+    cat in.tmp | head -n 1 | awk -f ~/bin/rename.awk $mapfile > h.tmp
+    # use the new header 
+    cat h.tmp; tail -n +2 in.tmp
+    # cat in.tmp | reframe <(cat h.tmp)
+    # cleanup
+    # rm in.tmp h.tmp
+else
+    # remember body
+    tail -n +2 > b.tmp
+    # echo the new header followed by the body
+    echo $@; cat b.tmp
+    # cleanup
+    rm b.tmp
+fi

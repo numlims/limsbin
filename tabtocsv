@@ -1,0 +1,5 @@
+#!/usr/bin/env python
+# tabtocsv converts tsv to csv
+# from https://unix.stackexchange.com/a/359838
+import csv, sys
+csv.writer(sys.stdout).writerows(csv.reader(sys.stdin, delimiter="\t"))

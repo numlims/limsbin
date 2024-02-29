@@ -1,0 +1,3 @@
+#!/usr/bin/sh
+# jarray: json array of input lines
+jq --raw-input | jq --slurp

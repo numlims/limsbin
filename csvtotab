@@ -1,0 +1,5 @@
+#!/usr/bin/bash
+# csvtotab converts csv to tsv
+
+# -T: tab output
+csvformat -T

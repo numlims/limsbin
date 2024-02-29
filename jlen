@@ -1,0 +1,5 @@
+#!/usr/bin/bash
+# jlen: length json element
+# usage: echo "['a', 'b', 'c']" | jlen
+
+jq "length"
