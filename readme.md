@@ -3,6 +3,9 @@ limsbin
 con: concatenate string
 > echo "hello" | con " you\n"
 
+copycat: print input n times
+> cat file | copycat -l 5
+
 csvtotab: comma-seperated to tab-seperated
 > cat hello.csv | csvtotab > hello.tsv
 

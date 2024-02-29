@@ -1,0 +1,40 @@
+#!/usr/bin/awk -f
+# cpcat: copycat
+# copies input n times
+# usage: cat file | copycat [-l] 3
+BEGIN {
+  if (ARGC != 2) {
+    print "usage: cat file | copycat [-l] <number of copies>"
+  }
+  if (ARGV[1] == "-l") {
+      linemode = 1
+      n = ARGV[2] # copy n times
+  } else {
+      n = ARGV[1]
+  }
+
+  ARGC = 0 # read stdin
+
+  t = ""
+  while (getline) {
+      # if in linemode, copy lines
+      if (linemode == 1) {
+          for (i = 0; i < n; i++) {
+              print $0
+          }
+      }
+      else {
+          t = t $0 "\n"
+      }
+  }
+  # if not in linemode, copy whole text
+  for (i = 0; i < n; i++) {
+      printf t
+  }
+} 
+# print each line n times
+#{
+#  for (i = 0; i < n; i++) {
+#    print $0
+#  }
+#}
