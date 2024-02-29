@@ -1,5 +1,0 @@
-#!/usr/bin/bash
-# con: concatenate string to stdin
-# usage: echo "hello" | con " you\n"
-head -c-1 | # remove the last newline from stdin. -c: character-mode
-    cat - <(echo -n -e "$@") # cat stdin (-) and the argument string without added newline (-n). -e lets you use \n in input

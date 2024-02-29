@@ -1,9 +1,0 @@
-#!/usr/bin/bash
-# lip: line pick
-# usage: cat file | body 2,3-12,13
-query=$1
-# change our input format into format recognized by sed: 10p single line, 3,7p range of lines, prints terminated by ;
-query=`echo $query | perl -pe 's/,/p;/g; s/-/,/g; s/$/p/'`
-# echo $query
-cat | sed -n $query
-
