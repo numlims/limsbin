@@ -1,15 +1,19 @@
 limsbin
 
 con: concatenate string
+
 `echo "hello" | con " you\n"`
 
 csvtotab: comma-seperated to tab-seperated
+
 `cat hello.csv | csvtotab > hello.tsv`
 
 fif: find in files
+
 `fif 'dir/' 'Specimen/'`
 
 lip: line pick
+
 `cat file | lip 2,3-12,13`
 
 j: access json dict/array
