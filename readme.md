@@ -38,3 +38,7 @@ reframe: change csv headers
 
 tabtocsv: tab-seperated to comma-seperated
 > cat hello.tsv | tabtocsv > hello.csv
+
+put limsbin on path (put this in your .bashrc)
+> export PATH=$PATH:/path/to/limsbin
+
