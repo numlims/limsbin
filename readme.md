@@ -37,4 +37,4 @@ reframe: change csv headers
 > cat file | reframe "my,new,header,line"
 
 tabtocsv: tab-seperated to comma-seperated
-> cat hello.tsv | csvtotab > hello.csv
+> cat hello.tsv | tabtocsv > hello.csv
