@@ -1,0 +1,5 @@
+#!/usr/bin/sh
+# ech: echo without newline
+# usage: ech 'a' | con 'bc'
+
+echo -n $@

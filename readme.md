@@ -1,13 +1,16 @@
 limsbin
 
 con: concatenate string
-> echo "hello" | con " you\n"
+> ech "hello" | con " you\n"
 
 copycat: print input n times
 > cat file | copycat -l 5
 
 csvtotab: comma-seperated to tab-seperated
 > cat hello.csv | csvtotab > hello.tsv
+
+ech: echo without newline
+> ech 'a' | con 'bc'
 
 fif: find in files
 > fif 'dir/' 'Specimen/'
@@ -38,6 +41,8 @@ reframe: change csv headers
 
 tabtocsv: tab-seperated to comma-seperated
 > cat hello.tsv | tabtocsv > hello.csv
+
+# setup
 
 put limsbin on path (put this in your .bashrc)
 > export PATH=$PATH:/path/to/limsbin
