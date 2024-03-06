@@ -1,0 +1,9 @@
+#!/usr/bin/bash
+# name: basename without suffix
+# usage: name myfile.txt
+# see also dirname
+
+name=$1
+name=`basename "$1"`
+# strip suffix
+echo ${name%.*}

@@ -15,9 +15,6 @@ ech: echo without newline
 fif: find in files
 > fif 'dir/' 'Specimen/'
 
-lip: line pick
-> cat file | lip 2,3-12,13
-
 j: access json dict/array
 > echo "['a', 'b', 'c']" | j 2
 
@@ -36,7 +33,13 @@ jsplit: input as json array
 jfmt: format json files
 > jfmt *.json
 
-reframe: change csv headers
+lip: line pick
+> cat file | lip 2,3-12,13
+
+name: filename without suffix
+> name file.json
+
+reframe: change csv header
 > cat file | reframe "my,new,header,line"
 
 tabtocsv: tab-seperated to comma-seperated
