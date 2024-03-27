@@ -57,4 +57,4 @@ copycat -l doesn't work
 
 ## license
 
-[cc0](https://creativecommons.org/public-domain/cc0/)
+[cc0](https://creativecommons.org/publicdomain/zero/1.0/)
