@@ -1,0 +1,7 @@
+#!/bin/sh
+
+# print lowercase
+
+# -CS flag for unicode, e.g. greek
+
+perl -CS -pe '$_=lc'

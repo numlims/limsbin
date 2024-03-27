@@ -34,6 +34,9 @@ jfmt: format json files
 lip: line pick
 > lip 2,3-12,13 < file
 
+lower: lower case
+> echo "Hello" | lower
+
 name: filename without suffix
 > name file.json
 
