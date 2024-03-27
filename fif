@@ -1,7 +1,6 @@
 #!/usr/bin/bash
 # fif: find in files
-# usage: fif <dir in single quotes> <search string>
-# todo: remove the single quotes from dir
+# usage: fif <search string> [dir]
 
 # if dir omitted, use current dir
 if [ $# == 1 ]
@@ -10,8 +9,8 @@ then
     search=$1
     grep -Rn . -e $search
 else
-    dir=$1
-    search=$2
+    search=$1
+    dir=$2
     grep -Rn $dir -e $search
 fi
 

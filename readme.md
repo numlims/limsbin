@@ -4,7 +4,7 @@ con: concatenate string
 > ech "hello" | con " you\n"
 
 copycat: print input n times
-> cat file | copycat -l 5
+> copycat -l 5 < file
 
 csvtotab: comma-seperated to tab-seperated
 > cat hello.csv | csvtotab > hello.tsv
@@ -13,34 +13,32 @@ ech: echo without newline
 > ech 'a' | con 'bc'
 
 fif: find in files
-> fif 'dir/' 'Specimen/'
+> fif TODO
 
 j: access json dict/array
 > echo "['a', 'b', 'c']" | j 2
 
-jarr: lines as json array
-> cat file | jarr
-
 jdict: fields as json dict
-> cat file | jdict
+> jdict < file
 
 jlen: length of json array
 > echo "['a', 'b', 'c']" | jlen
 
 jsplit: input as json array
 > echo "1,2,3" | jsplit ,
+> jsplit "\n" < file
 
 jfmt: format json files
 > jfmt *.json
 
 lip: line pick
-> cat file | lip 2,3-12,13
+> lip 2,3-12,13 < file
 
 name: filename without suffix
 > name file.json
 
 reframe: change csv header
-> cat file | reframe "my,new,header,line"
+> reframe "my,new,header,line" < file
 
 tabtocsv: tab-seperated to comma-seperated
 > cat hello.tsv | tabtocsv > hello.csv
@@ -50,3 +48,6 @@ tabtocsv: tab-seperated to comma-seperated
 put limsbin on path (put this in your .bashrc)
 > export PATH=$PATH:/path/to/limsbin
 
+# issues
+
+copycat -l doesn't work
