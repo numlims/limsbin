@@ -46,11 +46,15 @@ reframe: change csv header
 tabtocsv: tab-seperated to comma-seperated
 > cat hello.tsv | tabtocsv > hello.csv
 
-# setup
+## setup
 
 put limsbin on path (put this in your .bashrc)
 > export PATH=$PATH:/path/to/limsbin
 
-# issues
+## issues
 
 copycat -l doesn't work
+
+## license
+
+[cc0](https://creativecommons.org/public-domain/cc0/)
