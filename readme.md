@@ -26,6 +26,7 @@ jlen: length of json array
 
 jsplit: input as json array
 > echo "1,2,3" | jsplit ,
+
 > jsplit "\n" < file
 
 jfmt: format json files
