@@ -56,6 +56,8 @@ put limsbin on path (put this in your .bashrc)
 
 copycat -l doesn't work
 
+reframe depends on rename.awk
+
 **license**
 
 [cc0](https://creativecommons.org/publicdomain/zero/1.0/)

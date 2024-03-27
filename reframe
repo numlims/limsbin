@@ -6,7 +6,7 @@ if [[ $1 == "--mapping" ]]; then
     # remember input
     cat > in.tmp
     # generate a new header with renamed columns
-    cat in.tmp | head -n 1 | awk -f ~/bin/rename.awk $mapfile > h.tmp
+    cat in.tmp | head -n 1 | awk -f ~/limsbin/rename.awk $mapfile > h.tmp
     # use the new header 
     cat h.tmp; tail -n +2 in.tmp
     # cat in.tmp | reframe <(cat h.tmp)
