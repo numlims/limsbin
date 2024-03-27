@@ -1,4 +1,4 @@
-limsbin
+**limsbin**
 
 con: concatenate string
 > ech "hello" | con " you\n"
@@ -47,15 +47,15 @@ reframe: change csv header
 tabtocsv: tab-seperated to comma-seperated
 > cat hello.tsv | tabtocsv > hello.csv
 
-## setup
+**setup**
 
 put limsbin on path (put this in your .bashrc)
 > export PATH=$PATH:/path/to/limsbin
 
-## issues
+**issues**
 
 copycat -l doesn't work
 
-## license
+**license**
 
 [cc0](https://creativecommons.org/publicdomain/zero/1.0/)
