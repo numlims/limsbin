@@ -15,6 +15,9 @@ ech: echo without newline
 fif: find in files
 > fif TODO
 
+dofor: do for files
+> dofor "python script.py" "in/*" out
+
 j: access json dict/array
 > echo "['a', 'b', 'c']" | j 2
 
