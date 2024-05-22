@@ -9,14 +9,14 @@ copycat: print input n times
 csvtotab: comma-seperated to tab-seperated
 > cat hello.csv | csvtotab > hello.tsv
 
+dofor: do for files
+> dofor "in/*" "python script.py" out
+
 ech: echo without newline
 > ech 'a' | con 'bc'
 
 fif: find in files
 > fif TODO
-
-dofor: do for files
-> dofor "python script.py" "in/*" out
 
 j: access json dict/array
 > echo "['a', 'b', 'c']" | j 2
@@ -50,6 +50,10 @@ reframe: change csv header
 tabtocsv: tab-seperated to comma-seperated
 > cat hello.tsv | tabtocsv > hello.csv
 
+**neat commands**
+
+for some short handy commands, see (and update) neat-commands.md.
+
 **setup**
 
 put limsbin on path (put this in your .bashrc)
@@ -58,6 +62,8 @@ put limsbin on path (put this in your .bashrc)
 **issues**
 
 copycat -l doesn't work
+
+for jdict use `jc --yaml` instead?
 
 reframe depends on rename.awk
 

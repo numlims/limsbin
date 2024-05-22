@@ -5,13 +5,12 @@
 # if dir omitted, use current dir
 if [ $# == 1 ]
 then
-    #  echo "one argument: $1"
     search=$1
-    grep -Rn . -e $search
+    grep -Rn . -e "$search"
 else
-    search=$1
-    dir=$2
-    grep -Rn $dir -e $search
+    search=$1 
+    dir=$2 
+    grep -Rn $dir -e "$search"
 fi
 
 # grep options:
