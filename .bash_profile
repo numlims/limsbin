@@ -1,13 +1,13 @@
-# copy this in your .bash_profile and say `source .bash_profile`
+# copy the code here into your .bash_profile and say `source .bash_profile`
 
 # cdmk: mkdir and cd into it immediately
 # from https://unix.stackexchange.com/a/125386
+
 cdmk() {
-    
   # "$1": quotes protect the argument if it has spaces or so
   # --: makes the name not interpreted as an option for mkdir or cp, so you can create a dictionary that starts with - or --
-# -p: make parent directories if they do not exist yet
-# -P: resolve symbolic links
+  # -p: make parent directories if they do not exist yet
+  # -P: resolve symbolic links
 
   mkdir -p -- "$1"
   cd -P -- "$1"
@@ -17,30 +17,25 @@ cdmk() {
 ci() {
     # cd into the given directory
     cd "$1"
-    # if there's and index.txt, show it
-    if [[ -f "index.txt" ]]; then
-	# make text pageable with less, don't start less if text is less than one screen long
-	cat index.txt | less --quit-if-one-screen
-    elif [[ -f "readme.md" ]]; then
-	# make text pageable with less, don't start less if text is less than one screen long
-	cat readme.md | less --quit-if-one-screen 
-    fi
-
+    # show index
+    i
 }
 
 # i: show index.txt or readme.md with less
 i() {
-    # is there an index.txt?
-    if [[ -f index.txt ]]; then
-	cat index.txt | less --quit-if-one-screen
-    elif [[ -f readme.md ]]; then
-	cat readme.md | less --quit-if-one-screen
+    # if there's one of the listed files, show the first
+    f=`exst index.txt readme.* README.* readme README Readme Readme.*`
+    # -f: check that f is not empty
+    if [[ -f $f ]]; then
+	clear # so that print starts at the top of the screen
+	cat $f | less --quit-if-one-screen # --clear-screen: start printing at the top of the screen
     fi
 }
 
 # li lists directories along with a description line from their index.txt or readme.md
 # the description line is the first line starting with a word character.
 # -a (all) flag: list also the directories with no index.txt or readme.md
+# issue: ignores arguments
 li() {
     # look for a -a (all) flag with getopts
     # see https://stackoverflow.com/a/21128172 
@@ -73,5 +68,16 @@ li() {
 	    fi
 	fi
     done
+}
+
+# exst echoes the first file that exists, if none exists echo nothing
+exst() {
+    for f in $@; do
+	if [[ -f $f ]]; then
+	    echo $f
+	    break
+	fi
+    done
+    # no file exists, do nothing    
 }
 
