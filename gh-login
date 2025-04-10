@@ -1,0 +1,11 @@
+#!/usr/bin/bash
+# gh-login: log into (another) github account
+# usage: ghlogin <account/mail>
+
+# gh auth login doesn't seem to let you choose which account to log in to, so this helper script
+
+account=$1
+
+gh auth logout
+git config --global user.name $account
+gh auth login

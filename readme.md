@@ -1,5 +1,7 @@
 **limsbin**
 
+shell commands for json etc
+
 con: concatenate string
 > ech "hello" | con " you\n"
 
@@ -17,6 +19,12 @@ ech: echo without newline
 
 fif: find in files
 > fif TODO
+
+gh-login: specify which github account to log into
+> gh login numlims
+
+gh-logout: log out of github
+> gh-logout
 
 j: access json dict/array
 > echo "['a', 'b', 'c']" | j 2
@@ -52,7 +60,7 @@ tabtocsv: tab-seperated to comma-seperated
 
 **neat commands**
 
-for some short handy commands, see (and update) neat-commands.md.
+for some short handy commands, see (and update) [neat-commands.md](./neat-commands.md).
 
 **setup**
 
