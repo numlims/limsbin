@@ -20,6 +20,12 @@ ech: echo without newline
 fif: find in files
 > fif TODO
 
+gh-login: specify which github account to log into
+> gh login numlims
+
+gh-logout: log out of github
+> gh-logout
+
 j: access json dict/array
 > echo "['a', 'b', 'c']" | j 2
 
@@ -58,7 +64,7 @@ for ls'ing and cd'ing with index.txt/readme.md files, see `.bash_profile`
 
 **neat commands**
 
-for some short handy commands, see (and update) neat-commands.md.
+for some short handy commands, see (and update) [neat-commands.md](./neat-commands.md).
 
 **setup**
 

@@ -1,0 +1,16 @@
+# dofor: run command for multiple files each and store output for each file under same name in different dir
+# usage: dofor "<in files>" "<command>" <out dir>
+# example: dofor "in/*" "python script.py" out
+
+infiles=$1
+cmd=$2
+outdir=$3
+
+# ensure that the output directory exists
+mkdir -p "$outdir"
+
+for f in $infiles; do
+  # run the command with f as input and save output
+  bash -c "$cmd < '$f' > '$outdir/$(basename $f)'" # -c: following argument is command
+done
+
