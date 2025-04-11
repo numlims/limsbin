@@ -1,6 +1,6 @@
 **limsbin**
 
-little commands that might come in handy
+little shell shorthands
 
 con: concatenate string
 > ech "hello" | con " you\n"
