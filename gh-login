@@ -1,11 +1,26 @@
 #!/usr/bin/bash
 # gh-login: log into (another) github account
-# usage: ghlogin <account/mail>
+# usage: ghlogin <account/mail> <token file>
 
 # gh auth login doesn't seem to let you choose which account to log in to, so this helper script
 
 account=$1
+tokenfile=$2
 
+# logout
 gh auth logout
+
+# set user name for login
 git config --global user.name $account
-gh auth login
+
+# if tokenfile given, pass it via stdin
+if [[ $# == 2 ]]; then
+    # log in with token
+    cat $tokenfile | gh auth login --with-token -p https # -p: protocol
+else
+    # log in without token
+    gh auth login -p https # -p: protocol
+fi
+
+# print login status
+gh auth status
