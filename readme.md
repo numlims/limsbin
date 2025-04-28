@@ -26,6 +26,9 @@ gh-login: specify which github account to log into
 gh-logout: log out of github
 > gh-logout
 
+hen: header line numbered
+> cat myfile.tsv | hen
+
 j: access json dict/array
 > echo "['a', 'b', 'c']" | j 2
 
