@@ -64,6 +64,9 @@ reframe: change csv header
 tabtocsv: tab-seperated to comma-seperated
 > cat hello.tsv | tabtocsv > hello.csv
 
+upper: upper case
+> echo "hello" | upper
+
 **li, ci and i**
 
 for ls'ing and cd'ing with index.txt/readme.md files, see `.bash_profile`
