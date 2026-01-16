@@ -1,6 +1,6 @@
 **limsbin**
 
-shell commands for json etc
+little shell shorthands
 
 con: concatenate string
 > ech "hello" | con " you\n"
@@ -63,6 +63,10 @@ reframe: change csv header
 
 tabtocsv: tab-seperated to comma-seperated
 > cat hello.tsv | tabtocsv > hello.csv
+
+**li, ci and i**
+
+for ls'ing and cd'ing with index.txt/readme.md files, see `.bash_profile`
 
 **neat commands**
 
