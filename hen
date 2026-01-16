@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 # hen: head numbered. print the columns in the header columns numbered
-# usage: cat myfile.tsv | hen [-d <delimiter>]
+# usage: hen myfile.txt [-d <delimiter>]
 
 # look for -d (delimiter) flag with getopts
 # see https://stackoverflow.com/a/21128172
@@ -11,6 +11,10 @@ while getopts 'd:' flag; do # for non-boolean flag follow flag letter by colon
     esac
 done
 
-sed 1q | # get the header line
+cat - |   # cat "${1:-/dev/stdin}" doesn't quite work because flags, see https://stackoverflow.com/a/7045517
+  sed 1q | # get the header line
   tr "${delim}" '\n' | # get the fields by line
   cat -n # -n: show line numbers
+
+
+

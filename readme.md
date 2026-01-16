@@ -29,6 +29,9 @@ gh-logout: log out of github
 hen: header line numbered
 > cat myfile.tsv | hen
 
+hsort: sort ignoring the header line
+> cat myfile.tsv | hsort -k2 -nr
+
 j: access json dict/array
 > echo "['a', 'b', 'c']" | j 2
 
