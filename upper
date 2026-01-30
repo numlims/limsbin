@@ -1,0 +1,7 @@
+#!/bin/sh
+
+# print uppercase
+
+# -CS flag for unicode, e.g. greek
+
+perl -CS -pe '$_=uc'
