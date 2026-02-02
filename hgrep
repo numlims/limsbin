@@ -6,4 +6,9 @@
 # send it one time to head, to get the header, and an other time to tail, to sort the rest of the lines.
 # pass all the flags to sort.
 # redirect stdout to /dev/null, cause tee prints what it receives from stdin to stdout, which we don't need here.
-tee >(head -n 1) >(tail -n +2 | grep $@) > /dev/null
+# (tee >(head -n 1) >(tail -n +2 | grep "$@") > /dev/null) # produces wrong number of lines
+
+cat - > hgrep.tmp
+head -n 1 hgrep.tmp; tail -n +2 hgrep.tmp | egrep $@
+rm hgrep.tmp
+

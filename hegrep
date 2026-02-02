@@ -1,9 +1,14 @@
 #!/usr/bin/bash
 # hegrep: egrep after the header line. sends all flags to egrep.
-# cat myfile.tsv | hgrep T5
+# cat myfile.tsv | hegrep "(T5|T4)"
 
 # branch the stdin with tee.
 # send it one time to head, to get the header, and an other time to tail, to sort the rest of the lines.
 # pass all the flags to sort.
 # redirect stdout to /dev/null, cause tee prints what it receives from stdin to stdout, which we don't need here.
-tee >(head -n 1) >(tail -n +2 | egrep $@) > /dev/null
+#echo $@
+#(tee >(head -n 1) >(tail -n +2 | egrep $@) > /dev/null)  # produces wrong number of lines
+
+cat - > hegrep.tmp
+head -n 1 hegrep.tmp; tail -n +2 hegrep.tmp | egrep $@
+rm hegrep.tmp
