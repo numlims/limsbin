@@ -20,8 +20,11 @@ ech: echo without newline
 fif: find in files
 > fif TODO
 
+gh-collab: list/add collaborators
+> gh-collab numlims dbcq -a <username>
+
 gh-login: specify which github account to log into
-> gh login numlims
+> gh-login numlims <token>
 
 gh-logout: log out of github
 > gh-logout
@@ -64,8 +67,8 @@ lower: lower case
 name: filename without suffix
 > name file.json
 
-reframe: change csv header
-> reframe "my,new,header,line" < file
+reframe: rename csv columns
+> reframe -c "barcode:sampleid,rackbarcode:rackid" -C < my.csv
 
 tabtocsv: tab-seperated to comma-seperated
 > cat hello.tsv | tabtocsv > hello.csv
@@ -75,7 +78,13 @@ upper: upper case
 
 **li, ci and i**
 
-for ls'ing and cd'ing with index.txt/readme.md files, see `.bash_profile`
+for ls'ing and cd'ing with index.txt/readme.md files, see
+[li](https://github.com/tnustrings/li).
+
+**csv**
+
+for handling csv, see in2csv, csvcut, csvgrep, csvsql etc from
+[csvkit](https://csvkit.readthedocs.io/en/latest/).
 
 **neat commands**
 
@@ -85,6 +94,9 @@ for some short handy commands, see (and update) [neat-commands.md](./neat-comman
 
 put limsbin on path (put this in your .bashrc)
 > export PATH=$PATH:/path/to/limsbin
+
+install dependencies:
+> pip install csvkit
 
 **issues**
 

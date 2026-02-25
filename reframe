@@ -1,22 +1,36 @@
-#!/usr/bin/bash
-# reframe exchanges the header line of its input
-# usage: cat myfile.txt | reframe [--mapping <file>] "my,new,header,line"
-if [[ $1 == "--mapping" ]]; then
-    mapfile=$2
-    # remember input
-    cat > in.tmp
-    # generate a new header with renamed columns
-    cat in.tmp | head -n 1 | awk -f ~/limsbin/rename.awk $mapfile > h.tmp
-    # use the new header 
-    cat h.tmp; tail -n +2 in.tmp
-    # cat in.tmp | reframe <(cat h.tmp)
-    # cleanup
-    # rm in.tmp h.tmp
+# reframe: rename csv columns
+# usage cat my.csv | reframe -c "olda:newa,oldb:newb" -C
+
+# flags:
+# -d delimiter
+# -c columns map. e.g. olda:newa,oldb:newb,... if delimiter is comma
+# -C cut to columns specified by -c
+
+# todo: needs csv-safe way of handling header line
+
+d_flag=','
+c_flag=''
+C_flag='false'
+while getopts 'd:c:C' flag; do # for non-boolean flags follow flag letter by colon
+    case "${flag}" in
+        d) d_flag="${OPTARG}" ;;
+        c) c_flag="${OPTARG}" ;;
+        C) C_flag='true' ;;
+    esac
+done
+
+# get positional args
+# file=${@:$OPTIND:1}
+
+# rename the columns
+awk -f ~/limsbin/rename2.awk "${d_flag}" "${c_flag}" | 
+
+# if only the given colums with -c should be output, cut them.
+# for this, get only the target names from the column map.
+(if [[ $C_flag == 'true' ]]; then
+    # awk: split by delimiter and colon, print each second field (the target column names)
+    targetcols=`echo "$c_flag" | awk -F "[${d_flag}:]" -v d="$d_flag" '{ for (i = 1; i <= NF; i++) { if (i % 2 == 0) { printf $i; if (i < NF) { printf d } } } }'`
+    csvcut -c "$targetcols" -d "$d_flag"
 else
-    # remember body
-    tail -n +2 > b.tmp
-    # echo the new header followed by the body
-    echo $@; cat b.tmp
-    # cleanup
-    rm b.tmp
-fi
+    cat -
+fi)

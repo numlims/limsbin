@@ -1,0 +1,48 @@
+# gh collab
+
+list and add collaborators to gh repo.
+
+usage:
+gh-collab [-a <user to add>] owner repo
+
+pass :owner and :repo to reference the repo you're currently in.
+
+read the flags.
+
+``//gh-collab:
+#!/usr/bin/bash
+
+a_flag=""
+while getopts 'a:' flag; do
+    case "$flag" in
+        a) a_flag=${OPTARG} ;;
+    esac
+done
+``
+
+read the positional args.
+
+``
+shift $(($OPTIND - 1))
+
+owner=$1
+repo=$2
+``
+
+with out the -a add flag, list the collaborators.
+
+``
+if [[ $a_flag == "" ]]; then
+  gh api "repos/$owner/$repo/collaborators" | jq '.[] | .login' -r
+``
+
+with the add flag, add a user.
+
+``
+else
+  echo "adding user $a_flag"
+  gh api -XPUT "repos/$owner/$repo/collaborators/$a_flag" -f permission=push
+fi
+``
+
+
