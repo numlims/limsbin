@@ -7,6 +7,12 @@
 account=$1
 tokenfile=$2
 
+# if no arg given, print status
+if [[ $# == 0 ]]; then
+    gh auth status
+    exit
+fi
+
 # logout
 gh auth logout
 
