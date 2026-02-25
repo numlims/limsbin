@@ -16,9 +16,8 @@ fi
 # logout
 gh auth logout
 
-# set user name for login globally and locally (local seems to overwrite global)
+# set user name for login globally. repos need to set their local username by themselves, local overwrites global.
 git config --global user.name $account
-git config user.name $account
 
 # if tokenfile given, pass it via stdin
 if [[ $# == 2 ]]; then
