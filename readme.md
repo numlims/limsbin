@@ -21,7 +21,7 @@ fif: find in files
 > fif TODO
 
 gh-collab: list/add collaborators
-> gh-collab numlims dbcq -a <username>
+> gh-collab [-a <username>] numlims dbcq
 
 gh-login: specify which github account to log into
 > gh-login numlims <token>

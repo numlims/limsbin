@@ -13,6 +13,6 @@ repo=$2
 if [[ $a_flag == "" ]]; then
   gh api "repos/$owner/$repo/collaborators" | jq '.[] | .login' -r
 else
-  echo "adding user $a_flag"
-  gh api -XPUT "repos/$owner/$repo/collaborators/$a_flag" -f permission=push
+  echo -n "adding user: "
+  gh api -XPUT "repos/$owner/$repo/collaborators/$a_flag" -f permission=push | jq ".invitee.login" -r
 fi

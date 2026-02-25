@@ -40,8 +40,8 @@ with the add flag, add a user.
 
 ``
 else
-  echo "adding user $a_flag"
-  gh api -XPUT "repos/$owner/$repo/collaborators/$a_flag" -f permission=push
+  echo -n "adding user: "
+  gh api -XPUT "repos/$owner/$repo/collaborators/$a_flag" -f permission=push | jq ".invitee.login" -r
 fi
 ``
 
