@@ -1,6 +1,10 @@
 #!/usr/bin/bash
 # gh-login: log into (another) github account
-# usage: ghlogin <account/mail> <token file>
+# usage: gh-login <account/mail> <token file>
+
+# account: the account doesn't change the commit author, cause the commit author hinges on email.
+# mail: use mail to change the commit author.
+# token file: file containing github token
 
 # gh auth login doesn't seem to let you choose which account to log in to, so this helper script
 
@@ -17,7 +21,14 @@ fi
 gh auth logout
 
 # set user name for login globally. repos need to set their local username by themselves, local overwrites global.
-git config --global user.name $account
+# setting the username doesn't change who authors commits, cause this hinges on the email associated with the github account. to change the commit author use the email when logging in with this script, or change the user email later: git config --global user.email <mail>
+
+git config --global user.name $account # this can be both username and email
+
+# if an email was used for login, also update the email
+if [[ $account == *"@"* ]]; then
+    git config --global user.email $account
+fi
 
 # if tokenfile given, pass it via stdin
 if [[ $# == 2 ]]; then
