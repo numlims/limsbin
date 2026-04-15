@@ -18,6 +18,10 @@ get a manual page as pdf.
 
 > man -Tpdf docker run > docker-run.pdf
 
+pass xargs input to two or more places (marked by %) via sh call.
+
+> find -wholename *git/conf* -print0 | xargs -0 -I % sh -c "echo %; cat %"
+
 search in csv file.
 
 > csvgrep [-r <regex> -m <string>] -c <column>
