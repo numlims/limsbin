@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 # gh-login: log into (another) github account
 # usage: gh-login <account/mail> <token file>
- 
+  
 # account: the account doesn't change the commit author, cause the commit author hinges on email.
 # mail: use mail to change the commit author.
 # token file: file containing github token
