@@ -32,18 +32,6 @@ gh-login: specify which github account to log into
 gh-logout: log out of github
 > gh-logout
 
-hegrep: egrep after the header line
-> cat myfile.tsv | hegrep "(_T5|_T4)"
-
-hen: header line numbered
-> cat myfile.tsv | hen
-
-hgrep: grep after the header line
-> cat myfile.tsv | hgrep _T5
-
-hsort: sort after the header line
-> cat myfile.tsv | hsort -k2 -nr
-
 j: access json dict/array
 > echo "['a', 'b', 'c']" | j 2
 

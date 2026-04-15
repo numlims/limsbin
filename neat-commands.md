@@ -17,3 +17,15 @@ find files larger than 1GB.
 get a manual page as pdf.
 
 > man -Tpdf docker run > docker-run.pdf
+
+search in csv file.
+
+> csvgrep [-r <regex> -m <string>] -c <column>
+
+show csv column names numbered.
+
+> csvgrep -n
+
+sort csv file.
+
+> csvsort -c <column>
