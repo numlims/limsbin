@@ -1,0 +1,12 @@
+#!/usr/bin/bash
+
+# finc: find files and cat them
+# usage: finc *.git/config*
+
+# read args
+searchfor=$1
+
+# find the file names. print them seperated by null character (-print0) instead of \n to avoid white-space problems when passing them to xargs.
+find -wholename $searchfor -print0 |
+    # xargs: read seperated by null character (-0). use the % character (-I) to reference the paths that were passed. echo them, and cat the file contents beneath.
+    xargs -0 -I % sh -c "echo "%"; cat %; echo """

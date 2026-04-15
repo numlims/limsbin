@@ -20,6 +20,9 @@ ech: echo without newline
 fif: find in files
 > fif TODO
 
+finc: find and cat
+> finc *.git/config*
+
 gh-collab: list/add collaborators
 > gh-collab [-a <username>] numlims dbcq
 
